@@ -571,7 +571,7 @@ void Lisa_ProblemType::write(ostream& strm) const{
 void Lisa_ProblemType::read(istream& strm){
   
   // assure existence of input stream:
-  if(strm==NULL){
+  if(strm){
     G_ExceptionList.lthrow("No valid stream in Lisa_ProblemType::read().");
     return;
   }

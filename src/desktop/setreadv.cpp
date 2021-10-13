@@ -64,7 +64,7 @@ int n,m;
 
  sscanf(argv[1],"%d",&n);
  sscanf(argv[2],"%d",&m);
- sprintf(interp->result, "%d", (*G_Schedule->LR)[n][m]);
+ sprintf(interp->resultDontUse, "%d", (*G_Schedule->LR)[n][m]);
   return TCL_OK; 
 }
 
@@ -130,9 +130,9 @@ int TC_get_pt(ClientData /* clientData */,
   sscanf(argv[1],"%d",&n);
   sscanf(argv[2],"%d",&m);
   if (G_Values.PT) {
-    if(inttst( (*G_Values.PT)[n][m])) sprintf(interp->result, "%.0f", (*G_Values.PT)[n][m]);
-    else sprintf(interp->result, "%f", (*G_Values.PT)[n][m]);
-  } else sprintf(interp->result, "0");
+    if(inttst( (*G_Values.PT)[n][m])) sprintf(interp->resultDontUse, "%.0f", (*G_Values.PT)[n][m]);
+    else sprintf(interp->resultDontUse, "%f", (*G_Values.PT)[n][m]);
+  } else sprintf(interp->resultDontUse, "0");
   return TCL_OK; 
 }
 
@@ -191,15 +191,15 @@ int TC_getvar(ClientData /* clientData */,
       str+=ztos(G_Values.get_n()) +" "+ translate("Jobs");
     }
   }else if (name=="mwwidth"){
-    sprintf(interp->result, "%d",mw_width() );
+    sprintf(interp->resultDontUse, "%d",mw_width() );
   }else if (name=="mwheight"){
-    sprintf(interp->result, "%d",mw_height() );
+    sprintf(interp->resultDontUse, "%d",mw_height() );
   }else if (name=="get_m"){
-    sprintf(interp->result, "%d",G_Values.get_m());
+    sprintf(interp->resultDontUse, "%d",G_Values.get_m());
   }else if (name=="get_n"){
-    sprintf(interp->result, "%d",G_Values.get_n());
+    sprintf(interp->resultDontUse, "%d",G_Values.get_n());
   }else if (name=="get_mn"){
-    sprintf(interp->result, "%d", MIN(G_Values.get_n(),G_Values.get_m()));
+    sprintf(interp->resultDontUse, "%d", MIN(G_Values.get_n(),G_Values.get_m()));
   }else if (name=="alpha") {
     str=G_ProblemType.output_alpha();
   }else if (name=="beta") {
@@ -208,16 +208,16 @@ int TC_getvar(ClientData /* clientData */,
     str=G_ProblemType.output_gamma();
   }else if (name=="schedule_row") {
     sscanf(argv[2],"%d",&temp);
-    sprintf(interp->result, "%ld", (long) temp/ENTRYHEIGHT);
+    sprintf(interp->resultDontUse, "%ld", (long) temp/ENTRYHEIGHT);
   }else if (name=="schedulelist_row") {
     sscanf(argv[2],"%d",&temp);
-    sprintf(interp->result, "%ld", (long) temp/ENTRYHEIGHT);
+    sprintf(interp->resultDontUse, "%ld", (long) temp/ENTRYHEIGHT);
   }else if (name=="schedule_column") {
     sscanf(argv[2],"%d",&temp);
-    sprintf(interp->result, "%ld", (long) temp/ENTRYWIDTH);
+    sprintf(interp->resultDontUse, "%ld", (long) temp/ENTRYWIDTH);
   }else if (name=="schedule_identifier") { 
     if (argv[2] ==NULL || argv[3]==NULL){
-      interp->result="0";
+      interp->resultDontUse="0";
       return TCL_OK;
     } 
     sscanf(argv[2],"%d",&row);
@@ -231,10 +231,10 @@ int TC_getvar(ClientData /* clientData */,
     str = ztos(G_Schedule->semiactive);
   }else if (name=="w_row") {
     sscanf(argv[2],"%d",&temp);
-    sprintf(interp->result, "%ld", (long) temp/ENTRYHEIGHT);
+    sprintf(interp->resultDontUse, "%ld", (long) temp/ENTRYHEIGHT);
   }else if (name=="w_column") {
     sscanf(argv[2],"%d",&temp);
-    sprintf(interp->result, "%ld", (long) temp/ENTRYWIDTH);
+    sprintf(interp->resultDontUse, "%ld", (long) temp/ENTRYWIDTH);
   }else if (name=="w_identifier") {
     str="";
     sscanf(argv[2],"%d",&row);
@@ -452,7 +452,7 @@ int TC_getvar(ClientData /* clientData */,
     cerr << "in TC_getvar: Variable " <<name <<"unknown\n";
   }
   
-  if (str!="NOT_DEFINED") sprintf(interp->result, "%s", str.c_str() );
+  if (str!="NOT_DEFINED") sprintf(interp->resultDontUse, "%s", str.c_str() );
   return TCL_OK; 
 }
 

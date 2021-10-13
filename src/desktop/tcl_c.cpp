@@ -113,7 +113,7 @@ int TC_open_schedule(ClientData /* clientData*/ ,
 {
   if (argc<2) return TCL_OK; // no filename given
   ifstream fin( argv[1]);
-  if (fin==NULL) { 
+  if (fin) {
     G_ExceptionList.lthrow("file:"+(string) argv[1]+" cannot be opened");
     return TCL_OK;
   }
@@ -881,7 +881,7 @@ TCL_HACK_CHAR *argv[]){
   std::vector<Lisa_ProblemType> Solved;
   
   // set return value to false
-  sprintf(interp->result, "%d",0);
+  sprintf(interp->resultDontUse, "%d",0);
   //nothing appropriate found ???
   
   //if(get_problemList(argv[2],argv[1],Solved))
@@ -899,7 +899,7 @@ TCL_HACK_CHAR *argv[]){
        G_ProblemType.output_beta()==Solved[j].output_beta() && 
        ( Solved[j].get_property(OBJECTIVE) == ANY_OBJECTIVE || G_ProblemType.output_gamma()==Solved[j].output_gamma()))
       {
-	sprintf(interp->result, "%d",1);
+	sprintf(interp->resultDontUse, "%d",1);
 	return TCL_OK;
 	// reduction when algo provides O, current problem is O2 and the like   
       }
@@ -907,7 +907,7 @@ TCL_HACK_CHAR *argv[]){
 	    G_ProblemType.output_beta()== Solved[j].output_beta() &&
 	    ( Solved[j].get_property(OBJECTIVE) == ANY_OBJECTIVE || G_ProblemType.output_gamma()==Solved[j].output_gamma()))
       {
-	sprintf(interp->result, "%d",1);
+	sprintf(interp->resultDontUse, "%d",1);
 	return TCL_OK;
       }
     else if(G_ProblemType.output_alpha()==Solved[j].output_alpha() &&
@@ -918,7 +918,7 @@ TCL_HACK_CHAR *argv[]){
         if ((Solved[j].output_beta()+"p_ij=1" == G_ProblemType.output_beta()) ||
 	    (G_ProblemType.output_beta() == Solved[j].output_beta()+"; p_ij=1"))
           {
-            sprintf(interp->result, "%d",1);
+            sprintf(interp->resultDontUse, "%d",1);
             return TCL_OK;
           }
           
@@ -926,7 +926,7 @@ TCL_HACK_CHAR *argv[]){
 	if (( Solved[j].output_beta()+ "p_ij=p" == G_ProblemType.output_beta()) ||
             (G_ProblemType.output_beta() == Solved[j].output_beta()+"; p_ij=p")  )
 	  {
-              sprintf(interp->result, "%d",1);
+              sprintf(interp->resultDontUse, "%d",1);
               return TCL_OK;
 	  }              
       }

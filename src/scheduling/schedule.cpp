@@ -373,7 +373,7 @@ int Lisa_Schedule::get_property(int property) {
 void Lisa_Schedule::read(istream& strm) {
   
   // check input stream
-  if (strm==NULL) {
+  if (strm) {
     G_ExceptionList.lthrow("No valid stream in Lisa_Schedule::read().",
                             Lisa_ExceptionList::ANY_ERROR);
     return;

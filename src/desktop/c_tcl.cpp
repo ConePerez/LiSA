@@ -47,12 +47,12 @@ int Tcl_myAppInit( int /*argc*/, char ** /*argv[]*/, Tcl_Interp *interp ) {
   int         retcode;
   Tk_Window   mainWindow;
   if( Tcl_Init(interp) == TCL_ERROR ) {
-    fprintf(stderr, "Tcl_Init failed: %s\n", interp->result);
+    fprintf(stderr, "Tcl_Init failed: %s\n", interp->resultDontUse);
     exit(1);
   }
   
   if( Tk_Init(interp) == TCL_ERROR ) {
-    fprintf(stderr, "Tk_Init failed: %s\n", interp->result);
+    fprintf(stderr, "Tk_Init failed: %s\n", interp->resultDontUse);
     exit(1);
   }
    
@@ -165,7 +165,7 @@ int Tcl_myAppInit( int /*argc*/, char ** /*argv[]*/, Tcl_Interp *interp ) {
  retcode = Tcl_EvalFile( interp,(char*) file.c_str() );
  if(retcode != TCL_OK) {
    cerr << endl << "GUI: Initialization ERROR: " << Tcl_PosixError(interp) << endl;  
-   cerr << interp->result << endl;
+   cerr << interp->resultDontUse << endl;
    Tcl_BackgroundError(interp);
    exit(1);
  }

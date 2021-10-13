@@ -134,7 +134,7 @@ void Lisa_Values::write(ostream& strm) const {
 void Lisa_Values::read(istream& strm) {
   
   // assure stream existence
-  if (strm==NULL) {
+  if (strm) {
     G_ExceptionList.lthrow("No valid stream in Lisa_Values::read().",
                            Lisa_ExceptionList::ANY_ERROR);
     return;

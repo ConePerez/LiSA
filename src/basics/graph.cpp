@@ -12,7 +12,7 @@ using namespace std;
 
 void Lisa_Graph::write(ostream & strm)const{
   
-  if(strm==NULL){
+  if(strm){
     G_ExceptionList.lthrow("No valid stream in Lisa_Graph::write().",
                            Lisa_ExceptionList::ANY_ERROR);
     return;
@@ -32,7 +32,7 @@ void Lisa_Graph::write(ostream & strm)const{
 
 void Lisa_Graph::read(istream & strm){
   
-  if(strm==NULL){
+  if(strm){
     G_ExceptionList.lthrow("No valid stream in Lisa_Graph::read().",
                            Lisa_ExceptionList::ANY_ERROR);
     return;
@@ -1897,7 +1897,7 @@ int Lisa_WeightedGraph::next_predecessor(const int vertex,TIMETYP *const weight)
 
 void Lisa_WeightedGraph::write(std::ostream& strm)const{
   
-  if(strm==NULL){
+  if(strm){
     G_ExceptionList.lthrow("No valid stream in Lisa_WeightedGraph::write().",
                            Lisa_ExceptionList::ANY_ERROR);
     return;
@@ -1920,7 +1920,7 @@ void Lisa_WeightedGraph::write(std::ostream& strm)const{
 
 void Lisa_WeightedGraph::read(std::istream& strm){
   
-  if(strm==NULL){
+  if(strm){
     G_ExceptionList.lthrow("No valid stream in Lisa_WeightedGraph::read().",
                            Lisa_ExceptionList::ANY_ERROR);
     return;

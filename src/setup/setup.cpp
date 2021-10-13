@@ -29,13 +29,13 @@ int main(int argc, char* argv[])
 
      if (Tcl_Init(interp) == TCL_ERROR)
           {
-          cerr << "Tcl_Init failed: " << interp->result << endl;
+          cerr << "Tcl_Init failed: " << interp->resultDontUse << endl;
           exit(1);
           }
 
      if (Tk_Init(interp) == TCL_ERROR)
           {
-          cerr << "Tk_Init failed: " << interp->result << endl;
+          cerr << "Tk_Init failed: " << interp->resultDontUse << endl;
           exit(1);
           }
 
@@ -44,18 +44,18 @@ int main(int argc, char* argv[])
 
      if (Tcl_Eval(interp, strdup(cmd.c_str())) == TCL_OK)
           {
-          char* dir = strcat(strdup(interp->result), "/..");
+          char* dir = strcat(strdup(interp->resultDontUse), "/..");
           chdir(dir);
           }
      else
           {
-          cerr << "error while executing \"" << cmd << "\": " << interp->result << endl;
+          cerr << "error while executing \"" << cmd << "\": " << interp->resultDontUse << endl;
           exit(1);
           }
 
      if (Tcl_EvalFile(interp, strdup(tclFileName.c_str())) != TCL_OK)
           {
-          cerr << "error in \"" << tclFileName << "\": " << interp->result << endl;
+          cerr << "error in \"" << tclFileName << "\": " << interp->resultDontUse << endl;
           exit(1);
           }
 
