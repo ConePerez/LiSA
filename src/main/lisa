@@ -9,7 +9,7 @@
 
 # setting the LiSA home path
 
-LISAHOME="/home/operez/LiSA"
+LISAHOME="/home/coneperez/Documents/Lisa/LiSA"
 LISA_DTD_PATH="${LISAHOME}/data"
 
 # checking the LiSA configuration

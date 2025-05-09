@@ -113,7 +113,7 @@ int TC_open_schedule(ClientData /* clientData*/ ,
 {
   if (argc<2) return TCL_OK; // no filename given
   ifstream fin( argv[1]);
-  if (fin) {
+  if (!fin) {
     G_ExceptionList.lthrow("file:"+(string) argv[1]+" cannot be opened");
     return TCL_OK;
   }

@@ -1,1 +1,1 @@
-../../obj/setup.o: setup.cpp; $(CXX) -c $(CXXFLAGS) -o ../../obj/setup.o setup.cpp
+../../obj/setup.o: setup.cpp /usr/include/tcl8.6/tk.h /usr/include/tcl8.6/tcl.h  /usr/include/tcl8.6/tclDecls.h /usr/include/tcl8.6/tclPlatDecls.h  /usr/include/tcl8.6/tkDecls.h; $(CXX) -c $(CXXFLAGS) -o ../../obj/setup.o setup.cpp

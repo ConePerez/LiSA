@@ -40,7 +40,7 @@ int read(string dname){
   int oldn=G_Values.get_n();
   
   ifstream fin(dname.c_str());
-  if (fin) {
+  if (!fin) {
     G_ExceptionList.lthrow("Cannot open file '"+dname+"' for reading.",Lisa_ExceptionList::END_OF_FILE);
     return 1;
   }
@@ -125,7 +125,7 @@ int read_xml(string dname) {
   int oldm=G_Values.get_m();
   int oldn=G_Values.get_n();
   ifstream fin(dname.c_str());
-  if (fin) {
+  if (!fin) {
     G_ExceptionList.lthrow("cannot open file: "+dname+"\n",Lisa_ExceptionList::END_OF_FILE);
     return 1;
   }
@@ -220,7 +220,7 @@ int read_xml(string dname) {
 int save(string dname) {
   
   ofstream fout(dname.c_str());
-  if (fout) {
+  if (!fout) {
     G_ExceptionList.lthrow("Cannot open file: '"+dname+"' for writing.",Lisa_ExceptionList::Lisa_ExceptionList::END_OF_FILE);
     return 1;
   }
@@ -315,7 +315,7 @@ void write_alg_call_xml(std::string output_file,
 
 int read_schedule(std::string fname){
 		ifstream fin(fname.c_str());
-  if (fin) {
+  if (!fin) {
     G_ExceptionList.lthrow("file:"+ fname +" cannot be opened");
     return 1;
   }
@@ -371,7 +371,7 @@ int read_schedule(std::string fname){
 int read_schedule_xml(std::string fname)
 {
 		ifstream fin( fname.c_str());
-  if (fin) {
+  if (!fin) {
     G_ExceptionList.lthrow("file:"+ fname +" cannot be opened");
     return 1;
   }
@@ -419,7 +419,7 @@ int get_problemList(std::string filename,
 {
 		ifstream fin(filename.c_str());
   
-  if (fin) {
+  if (!fin) {
     G_ExceptionList.lthrow("cannot open file: "+filename+"\n",Lisa_ExceptionList::END_OF_FILE);
     return 1;
   }
@@ -484,7 +484,7 @@ int get_problemList_xml(std::string filename,
 																								std::vector<Lisa_ProblemType>& Problems)
 {
 		ifstream fin(filename.c_str());
-		if (fin) {
+		if (!fin) {
     G_ExceptionList.lthrow("cannot open file: "+filename+"\n",Lisa_ExceptionList::END_OF_FILE);
     return 1;
   }

@@ -14,4 +14,17 @@ of Magdeburg, "Intstitut fuer Algebra and Geometrie", (Germany).
 
    www: http://lisa.math.uni-magdeburg.de
 
+CONFIGURE PARAMETERS
+--------------------
+I ran the configure script with these parameters:
+./configure --enable-debug --with-tcl-includes=/usr/include/tcl8.6 --with-tcl-libraries=/usr/lib/x86_64-linux-gnu
 
+MAKE
+----
+I ran the following make commands after the configure
+make depend
+make
+
+VS Code
+-------
+The vs code project configuration is under the .vscode folder. I was able to run the gdb debuger inside vs code.
